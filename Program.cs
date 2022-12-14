@@ -3,6 +3,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// Editing the same line (file from feature-2 branch)
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
