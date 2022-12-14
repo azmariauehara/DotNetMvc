@@ -5,7 +5,6 @@ builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-// Configure development enviroment
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
