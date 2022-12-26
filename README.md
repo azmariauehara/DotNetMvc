@@ -24,3 +24,4 @@ Result:
   "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
+
