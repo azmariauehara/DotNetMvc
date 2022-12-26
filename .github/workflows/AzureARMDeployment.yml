@@ -1,4 +1,4 @@
-#[setup-gitactions] Deploy ARM template
+#[setup-gitactions] Deploy VNET
 
 env:
   DOTNET_VERSION: '6.0.x'                 # set this to the .NET Core version to use
