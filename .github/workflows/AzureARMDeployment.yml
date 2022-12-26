@@ -62,7 +62,7 @@ jobs:
         with: 
           inlineScript: |
             az deployment group create \
-            --name githubactions \ 
+            --name sp-dotnetmvc \ 
             --resource-group rg-dotnetmvc \
             --template-file armtemplates/storeageaccount.json \
             -- parameters storageAccountType=StandardGRS
