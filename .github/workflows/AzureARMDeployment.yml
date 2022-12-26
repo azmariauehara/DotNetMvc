@@ -24,12 +24,22 @@ jobs:
       
       - name: Checkout source code
         uses: actions/checkout@v2
-        
+      
+      - name: Get dir
+        uses: azure/CLI@v1
+        with: 
+          inlineScript: pwd
+
+      - name: List content
+        uses: azure/CLI@v1
+        with: 
+          inlineScript: dir          
+
       - name: Deploy ARM template
         uses: azure/CLI@v1
         with: 
           inlineScript: |
             az deployment group create \
-            --resource-group rg_dotnetmvc \
-            --template-file ./armtemplates/storeageaccount.json \
-            --parameters ./armtemplates/storageaccount.parameters.json
+              --resource-group rg_dotnetmvc \
+              --template-file armtemplates/storeageaccount.json \
+              --parameters armtemplates/storageaccount.parameters.json
