@@ -33,7 +33,7 @@ jobs:
       - name: List content
         uses: azure/CLI@v1
         with: 
-          inlineScript: dir          
+          inlineScript: ls          
 
       - name: Deploy ARM template
         uses: azure/CLI@v1
