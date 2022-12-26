@@ -57,12 +57,16 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
         
+      - name: Create Resource Group
+        uses: azure/CLI@v1
+        with:
+          inlineScript: az group create -l northeurope -n rg_dotnetmvc
+
       - name: Deploy ARM template
         uses: azure/CLI@v1
         with: 
           inlineScript: |
             az deployment group create \
-            --name sp-dotnetmvc \ 
-            --resource-group rg-dotnetmvc \
-            --template-file armtemplates/storeageaccount.json \
-            --parameters storageAccountType=Standard_GRS
+            --resource-group rg_dotnetmvc \
+            --template-file ./armtemplates/storeageaccount.json \
+            --parameters ./armtemplates/storageaccount.parameters.json
