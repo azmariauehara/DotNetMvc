@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Projects\\AZ-400\\myWebApp\\myWebApp.csproj": {}
+    "D:\\Projects\\AZ-400\\DotNetMvc\\myWebApp.csproj": {}
   },
   "projects": {
-    "D:\\Projects\\AZ-400\\myWebApp\\myWebApp.csproj": {
+    "D:\\Projects\\AZ-400\\DotNetMvc\\myWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Projects\\AZ-400\\myWebApp\\myWebApp.csproj",
+        "projectUniqueName": "D:\\Projects\\AZ-400\\DotNetMvc\\myWebApp.csproj",
         "projectName": "myWebApp",
-        "projectPath": "D:\\Projects\\AZ-400\\myWebApp\\myWebApp.csproj",
+        "projectPath": "D:\\Projects\\AZ-400\\DotNetMvc\\myWebApp.csproj",
         "packagesPath": "C:\\Users\\rober\\.nuget\\packages\\",
-        "outputPath": "D:\\Projects\\AZ-400\\myWebApp\\obj\\",
+        "outputPath": "D:\\Projects\\AZ-400\\DotNetMvc\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

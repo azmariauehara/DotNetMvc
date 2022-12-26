@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hIwlLshh+cyEIzzF0QqAM7MAEU1hnYtdeK6xbtyqpkWWBRJKtMyx5OW8yyPiDHMV2BbvOgWNUTBsmxski3z8Vw==",
+  "dgSpecHash": "L9lz7VjVxZtURYpPD4p9LhrOo217pAAr9oCWSg7mP0I99oYDmaZSybMl3gRnrzFlq1Q+MOxqrKneoYMEdp1qjw==",
   "success": true,
-  "projectFilePath": "D:\\Projects\\AZ-400\\myWebApp\\myWebApp.csproj",
+  "projectFilePath": "D:\\Projects\\AZ-400\\DotNetMvc\\myWebApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\AZ-400\\myWebApp\\myWebApp.csproj",
+      "projectUniqueName": "d:\\Projects\\AZ-400\\DotNetMvc\\myWebApp.csproj",
       "projectName": "myWebApp",
-      "projectPath": "D:\\Projects\\AZ-400\\myWebApp\\myWebApp.csproj",
+      "projectPath": "d:\\Projects\\AZ-400\\DotNetMvc\\myWebApp.csproj",
       "packagesPath": "C:\\Users\\rober\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\AZ-400\\myWebApp\\obj\\",
+      "outputPath": "d:\\Projects\\AZ-400\\DotNetMvc\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
