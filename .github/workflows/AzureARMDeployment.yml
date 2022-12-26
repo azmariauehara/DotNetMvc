@@ -1,7 +1,7 @@
-#[setup-gitactions] fix deploy
+#[setup-gitactions] Deploy ARM template
 
 env:
-  AZURE_SUBSCRIPTION_ID: ae0d5ee9-54ad-466f-9db6-4301e35952b4    # set this to the name of your Azure Web App
+  AZURE_SUBSCRIPTION_ID: ae0d5ee9-54ad-466f-9db6-4301e35952b4
   DOTNET_VERSION: '6.0.x'                 # set this to the .NET Core version to use
 
 on:
