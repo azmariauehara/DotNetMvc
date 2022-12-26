@@ -41,5 +41,5 @@ jobs:
           inlineScript: |
             az deployment group create \
               --resource-group rg_dotnetmvc \
-              --template-file armtemplates/storeageaccount.json \
-              --parameters armtemplates/storageaccount.parameters.json
+              --template-file .github/workflows/armtemplates/storeageaccount.json \
+              --parameters .github/workflows/armtemplates/storageaccount.parameters.json
