@@ -18,7 +18,7 @@
             "value": "northeurope"
         },
         "virtualNetworkName": {
-            "value": "vnscopedeployskeleton"
+            "value": "vnetdotnetmvc"
         },
         "virtualNetworkAddressPrefix": {
             "value": [
