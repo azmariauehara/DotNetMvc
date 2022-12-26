@@ -23,17 +23,7 @@ jobs:
           creds: ${{secrets.AZURE_CREDENTIALS }}
       
       - name: Checkout source code
-        uses: actions/checkout@v2
-      
-      - name: Get dir
-        uses: azure/CLI@v1
-        with: 
-          inlineScript: pwd
-
-      - name: List content
-        uses: azure/CLI@v1
-        with: 
-          inlineScript: ls          
+        uses: actions/checkout@v2          
 
       - name: Deploy ARM template
         uses: azure/CLI@v1
