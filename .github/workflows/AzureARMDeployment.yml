@@ -65,4 +65,4 @@ jobs:
             --name sp-dotnetmvc \ 
             --resource-group rg-dotnetmvc \
             --template-file armtemplates/storeageaccount.json \
-            -- parameters storageAccountType=StandardGRS
+            --parameters storageAccountType=Standard_GRS
