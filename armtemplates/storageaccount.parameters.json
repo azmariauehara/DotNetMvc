@@ -16,6 +16,20 @@
         },
         "location": {
             "value": "northeurope"
+        },
+        "virtualNetworkName": {
+            "value": "vnscopedeployskeleton"
+        },
+        "virtualNetworkAddressPrefix": {
+            "value": [
+                "10.0.0.0/16"
+            ]
+        },
+        "VirtualNetworkSubnetName": {
+            "value": "Subnet-1"
+        },
+        "virtualNetworkSubnetAddressPrefix": {
+            "value": "10.0.0.0/24"
         }
     }
 }

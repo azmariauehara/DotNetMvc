@@ -54,15 +54,37 @@
             "metadata": {
                 "description": "Location for all resources."
             }
+        },
+        "virtualNetworkName" : {
+            "type" : "string",
+            "metadata" : {
+                "description" : "Specify a name for the virtual network"
+            }
+        },
+        "virtualNetworkAddressPrefix" : {
+            "type" : "array",
+            "metadata" : {
+                "description" : "Specify the address space(s) for this virtual network"
+            }
+        },
+        "VirtualNetworkSubnetName" : {
+            "type" : "string",
+            "metadata" : {
+                "description" : "Specify a name for a subnet in this virtual network"
+            }
+        },
+        "virtualNetworkSubnetAddressPrefix" : {
+            "type" : "string",
+            "metadata" : {
+                "description" : "Specify the address space for the subnet in the virtual network"
+            }
         }
     },
     "functions": [],
-    "variables": {
-        "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
-    },
+    "variables": {},
     "resources": [{
         "type": "Microsoft.Storage/storageAccounts",
-        "name": "[variables('storageAccountName')]",
+        "name": "[parameters('storageAccountName')]",
         "location": "[parameters('location')]",
         "apiVersion": "2022-09-01",
         "sku": {
@@ -71,11 +93,33 @@
         },
         "kind": "[parameters('storageAccountKind')]",
         "properties": {}
+    },
+    {
+        "name": "[parameters('virtualNetworkName')]",
+        "type": "Microsoft.Network/virtualNetworks",
+        "apiVersion": "2019-11-01",
+        "location": "[resourceGroup().location]",
+        "tags": {
+            "displayName": "[parameters('virtualNetworkName')]"
+        },
+        "properties": {
+            "addressSpace": {
+                "addressPrefixes": "[parameters('virtualNetworkAddressPrefix')]"
+            },
+            "subnets": [
+                {
+                    "name": "[parameters('VirtualNetworkSubnetName')]",
+                    "properties": {
+                        "addressPrefix": "[parameters('virtualNetworkSubnetAddressPrefix')]"
+                    }
+                }
+            ]
+        }
     }],
     "outputs": {
         "storageAccountName": {
             "type": "string",
-            "value": "[variables('storageAccountName')]"
+            "value": "[parameters('storageAccountName')]"
         }
     }
 }
