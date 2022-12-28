@@ -1,0 +1,89 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "storageAccountType": {
+        "type": "string",
+        "defaultValue": "Standard_LRS",
+        "allowedValues": [
+          "Standard_LRS",
+          "Standard_GRS",
+          "Standard_ZRS",
+          "Premium_LRS"
+        ],
+        "metadata": {
+          "description": "Storage Account type"
+        }
+      },
+        "storageAccountKind": {
+          "type": "string",
+          "allowedValues" : [
+              "StorageV2"
+          ],
+          "defaultValue" : "StorageV2",
+          "metadata" : {
+              "description" : "Select a kind of Tier"
+          }
+      },
+      "storageAccountTier": {
+          "type" : "string",
+          "allowedValues" : [
+              "Standard",
+              "Premium"
+          ],
+          "defaultValue" : "Standard",
+          "metadata" : {
+              "description" : "Select a storage SKU tier"
+          }
+      },
+      "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]",
+        "metadata": {
+          "description": "Location for all resources."
+        }
+      },
+      "containerName": {
+        "type": "string",
+        "defaultValue": "templates"
+      }
+    },
+    "variables": {
+      "storageAccountName": "[concat(replace(toLower(resourceGroup().name),'-',''), 'standardsa')]",
+      "serviceSasFunctionValues": {
+        "canonicalizedResource": "[concat('/blob/', variables('storageAccountName'), '/', parameters('containerName'))]",
+        "signedResource": "c",
+        "signedPermission": "r",
+        "signedExpiry": "2050-01-01T00:00:00Z"
+      }
+    },
+    "resources": [
+    {
+        "type": "Microsoft.Storage/storageAccounts",
+        "name": "[variables('storageAccountName')]",
+        "location": "[parameters('location')]",
+        "apiVersion": "2022-09-01",
+        "sku": {
+            "name": "[parameters('storageAccountType')]",
+            "tier": "[parameters('storageAccountTier')]"
+        },
+        "kind": "[parameters('storageAccountKind')]",
+        "properties": {},
+        "resources": [
+          {
+            "name": "[concat('default/', parameters('containerName'))]",
+            "type": "blobServices/containers",
+            "apiVersion": "2022-09-01",
+            "dependsOn": [
+              "[variables('storageAccountName')]"
+            ]
+          }
+        ]   
+    }],
+    "outputs": {
+      "serviceSas": {
+        "type": "string",
+        "value": "[listServiceSas(variables('storageAccountName'), '2022-09-01', variables('serviceSasFunctionValues')).serviceSasToken]"
+      }
+  }
+}

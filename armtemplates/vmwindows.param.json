@@ -1,0 +1,50 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "location": {
+        "value": "northeurope"
+      },
+      "vmName": {
+        "value": "demoVM1"
+      },
+      "virtualMachineAdminUserName": {
+        "value": "demoadmin"
+      },
+      "virtualMachineAdminPassword": {
+        "value": "odGPcscbykl1l2HTEzJDUwedFn7xYF9i4lVjWig/8P+ACRCs4DQW"
+      },
+      "virtualMachineSize": {
+        "value": "Standard_DS2_v2"
+      },
+      "virtualNetworkName": {
+        "value": "vnet"
+      },
+      "virtualNetworkPrefix": {
+        "value": ["10.0.0.0/16"]
+      },
+      "subnetName": {
+        "value": "subnet"
+      },
+      "subnetPrefix": {
+        "value": "10.0.0.0/24"
+      },
+      "virtualNetworkResourceGroup": {
+        "value": "rglabvm"
+      },
+      "domainAdminUserName": {
+        "value": "labvm\\admin"
+      },
+      "domainAdminPassword": {
+        "reference": {
+          "keyVault": {
+            "id": "/subscriptions/ae0d5ee9-54ad-466f-9db6-4301e35952b4/resourceGroups/rglabkeyvault/providers/Microsoft.KeyVault/vaults/kvlabkeyvault"
+          },
+          "secretName": "labvmadminpwd"
+        }
+      },
+      "domainFQDN": {
+        "value": "labvm.net"
+      }
+    }
+  }

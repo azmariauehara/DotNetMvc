@@ -1,0 +1,69 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualNetworkName" : {
+            "type" : "string",
+            "defaultValue": "VNet1",
+            "metadata" : {
+                "description" : "Specify a name for the virtual network"
+            }
+        },
+        "virtualNetworkAddressPrefix" : {
+            "type" : "array",
+            "defaultValue": ["10.0.0.0/16"],
+            "metadata" : {
+                "description" : "Specify the address space(s) for this virtual network"
+            }
+        },
+        "VirtualNetworkSubnetName" : {
+            "type" : "string",
+            "defaultValue": "SubNet1",
+            "metadata" : {
+                "description" : "Specify a name for a subnet in this virtual network"
+            }
+        },
+        "virtualNetworkSubnetAddressPrefix" : {
+            "type" : "string",
+            "defaultValue": "10.0.0.0/24",
+            "metadata" : {
+                "description" : "Specify the address space for the subnet in the virtual network"
+            }
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+    {
+        "name": "[parameters('virtualNetworkName')]",
+        "type": "Microsoft.Network/virtualNetworks",
+        "apiVersion": "2019-11-01",
+        "location": "[resourceGroup().location]",
+        "tags": {
+            "displayName": "[parameters('virtualNetworkName')]"
+        },
+        "properties": {
+            "addressSpace": {
+                "addressPrefixes": "[parameters('virtualNetworkAddressPrefix')]"
+            },
+            "subnets": [
+                {
+                    "name": "[parameters('VirtualNetworkSubnetName')]",
+                    "properties": {
+                        "addressPrefix": "[parameters('virtualNetworkSubnetAddressPrefix')]"
+                    }
+                }
+            ]
+        }
+    }],
+    "outputs": {
+        "virtualNetworkName": {
+            "type": "string",
+            "value": "[parameters('virtualNetworkName')]"
+        },
+        "VirtualNetworkSubnetName": {
+            "type": "string",
+            "value": "[parameters('VirtualNetworkSubnetName')]"
+        }
+    }
+}

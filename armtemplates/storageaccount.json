@@ -2,14 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "storageAccountName" : {
-            "type" : "string",
-            "minLength" : 3,
-            "maxLength" : 24,
-            "metadata" : {
-                "description" : "Specify a name for the storage account. This needs to be unique."
-            }
-        },
         "storageAccountTier": {
             "type" : "string",
             "allowedValues" : [
@@ -21,7 +13,7 @@
                 "description" : "Select a storage SKU tier"
             }
         },        
-        "storageAccountSku": {
+        "storageAccountType": {
             "type" : "string",
             "allowedValues" : [
                 "Standard_LRS",
@@ -54,72 +46,28 @@
             "metadata": {
                 "description": "Location for all resources."
             }
-        },
-        "virtualNetworkName" : {
-            "type" : "string",
-            "metadata" : {
-                "description" : "Specify a name for the virtual network"
-            }
-        },
-        "virtualNetworkAddressPrefix" : {
-            "type" : "array",
-            "metadata" : {
-                "description" : "Specify the address space(s) for this virtual network"
-            }
-        },
-        "VirtualNetworkSubnetName" : {
-            "type" : "string",
-            "metadata" : {
-                "description" : "Specify a name for a subnet in this virtual network"
-            }
-        },
-        "virtualNetworkSubnetAddressPrefix" : {
-            "type" : "string",
-            "metadata" : {
-                "description" : "Specify the address space for the subnet in the virtual network"
-            }
         }
     },
     "functions": [],
-    "variables": {},
+    "variables": {
+        "storageAccountName": "[concat(replace(toLower(resourceGroup().name), '-', ''), 'standardsa')]"
+    },
     "resources": [{
         "type": "Microsoft.Storage/storageAccounts",
-        "name": "[parameters('storageAccountName')]",
+        "name": "[variables('storageAccountName')]",
         "location": "[parameters('location')]",
         "apiVersion": "2022-09-01",
         "sku": {
-            "name": "[parameters('storageAccountSku')]",
+            "name": "[parameters('storageAccountType')]",
             "tier": "[parameters('storageAccountTier')]"
         },
         "kind": "[parameters('storageAccountKind')]",
         "properties": {}
-    },
-    {
-        "name": "[parameters('virtualNetworkName')]",
-        "type": "Microsoft.Network/virtualNetworks",
-        "apiVersion": "2019-11-01",
-        "location": "[resourceGroup().location]",
-        "tags": {
-            "displayName": "[parameters('virtualNetworkName')]"
-        },
-        "properties": {
-            "addressSpace": {
-                "addressPrefixes": "[parameters('virtualNetworkAddressPrefix')]"
-            },
-            "subnets": [
-                {
-                    "name": "[parameters('VirtualNetworkSubnetName')]",
-                    "properties": {
-                        "addressPrefix": "[parameters('virtualNetworkSubnetAddressPrefix')]"
-                    }
-                }
-            ]
-        }
     }],
     "outputs": {
         "storageAccountName": {
             "type": "string",
-            "value": "[parameters('storageAccountName')]"
+            "value": "[variables('storageAccountName')]"
         }
     }
 }

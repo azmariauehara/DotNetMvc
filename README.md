@@ -25,3 +25,7 @@ Result:
 }
 ```
 
+
+### To deploy by powershell
+use script:
+
